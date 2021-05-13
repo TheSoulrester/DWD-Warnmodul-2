@@ -8,6 +8,7 @@
 	<meta name="author" content="dj0001">
 	<link rel="manifest" href="manifest.json">
 	<link rel="icon" type="image/png" sizes="192x192" href="icons/warn.png">
+	<META HTTP-EQUIV="refresh" CONTENT="300">
 
 <!--
 
@@ -112,7 +113,7 @@ Anregungen zur Nutzung oder beispielhafte Weiterentwicklungen nehmen wir gerne u
 	var baseLayers = {
 			"OpenStreetMap": osmlayer.addTo(karte)
 	};
-		var pollenlayer = L.tileLayer.wms("https://maps.dwd.de/geoproxy/service/", {  //
+	var pollenlayer = L.tileLayer.wms("https://maps.dwd.de/geoproxy/service/", {  //
 		layers: 'Pollenflug_'+(new Date().getMonth()>=4?'Graeser':'Birke'),
 		format: 'image/png',
 		styles: '',
@@ -120,14 +121,14 @@ Anregungen zur Nutzung oder beispielhafte Weiterentwicklungen nehmen wir gerne u
 		opacity: 0.6
 	});
 	var overLayers = {
-			"<span title='DWD Geoserver dwd:Warnungen_Gemeinden_vereinigt'>Warnungen einblenden</span>": warnlayer.addTo(karte),
-			"<span title='DWD Geoserver Kreiswarngebiete'>Kreisgrenzen</span>": kreislayer.addTo(karte),
-			"<span title='DWD Geoserver Gemeindewarngebiete'>Gemeindegrenzen</span>": gemeindelayer,
+			"<span title='Wetter- und Unwetterwarnungen auf Warnkarte einblenden'>Warnungen einblenden</span>": warnlayer.addTo(karte),
+			"<span title='Kreisgrenzen auf Warnkarte einblenden'>Kreisgrenzen einblenden</span>": kreislayer.addTo(karte),
+			"<span title='Gemeindegrenzen auf Warnkarte einblenden'>Gemeindegrenzen einblenden</span>": gemeindelayer,
 	}; 
-	overLayers["<span title='Pollenflug'>"+pollenlayer.options.layers+"</span>"] = pollenlayer
+	overLayers["<span title='Pollenflug auf Warnkarte einblenden'>"+pollenlayer.options.layers+"</span>"] = pollenlayer
 
 	// Layercontrol-Element erstellen und hinzufügen
-    var lc = L.control.layers(baseLayers, overLayers).addTo(karte);  //, {autoZIndex:false})
+    /*var lc = */L.control.layers(baseLayers, overLayers).addTo(karte);  //, {autoZIndex:false})
 
 	// Demo-Marker mit Popup hinzufügen
 	//var marker = L.marker([49.8916044, 10.8868478]).addTo(karte);
